@@ -1,0 +1,36 @@
+### HEXMate logfile and output summary ###
+
+### Command-line arguments ###
+ C:\Users\ANDERS~1.PER\AppData\Local\Temp\xcAs5n0.0\driver_tmp_3.o
+ -Odist/default/production\Aula_11_03_26.X.production.hex
+ -logfile=dist/default/production\Aula_11_03_26.X.production.hxl
+ -addressing=1
+ -break=300000
+
+### Memory Usage ###
+ Input file ranges:
+  0h - 3h		(C:\Users\ANDERS~1.PER\AppData\Local\Temp\xcAs5n0.0\driver_tmp_3.o)
+  8h - 23h		(C:\Users\ANDERS~1.PER\AppData\Local\Temp\xcAs5n0.0\driver_tmp_3.o)
+  1000h - 1051h		(C:\Users\ANDERS~1.PER\AppData\Local\Temp\xcAs5n0.0\driver_tmp_3.o)
+ Unused ranges:
+  4h - 7h
+  24h - FFFh
+
+### Hex Memory Map ###
+ Legend:
+  -- = Unused memory
+  H1 = Input file             (C:\Users\ANDERS~1.PER\AppData\Local\Temp\xcAs5n0.0\driver_tmp_3.o)
+----------------------------------------------------------
+         | 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
+----------------------------------------------------------
+00000000 | H1 H1 H1 H1 -- -- -- -- H1 H1 H1 H1 H1 H1 H1 H1
+00000010 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00000020 | H1 H1 H1 H1 -- -- -- -- -- -- -- -- -- -- -- --
+----------------------------------------------------------
+00001000 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00001010 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00001020 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00001030 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00001040 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00001050 | H1 H1 -- -- -- -- -- -- -- -- -- -- -- -- -- --
+00001060 | --
