@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+  <executable name="dist/default/production/FreeRTOS.production.elf">
+    <memory name="data">
+      <units>bytes</units>
+      <length>8192</length>
+      <used>4980</used>
+      <free>3212</free>
+    </memory>
+    <memory name="program">
+      <units>bytes</units>
+      <length>131322</length>
+      <used>31308</used>
+      <free>100014</free>
+    </memory>
+  </executable>
+</project>
