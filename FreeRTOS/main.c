@@ -1,18 +1,24 @@
-#include "FreeRTOS.h"
-#include "task.h"
+#include "jantar.h"
 
-void task_1();
-void task_2();
+void task_1(void);
+void task_2(void);
 
 void task_config();
 
+// Estrutura de dados do semáforo
+xSemaphoreHandle s;
 
 int main()
 {
-    xTaskCreate(task_1, "T1", 128, NULL, 2, NULL);
+    // Cria um semáforo binário
+    s = xSemaphoreCreateBinary();
+    
+    xSemaphoreGive(s);
+    
+    xTaskCreate(task_1, "T1", 128, NULL, 3, NULL);
     xTaskCreate(task_2, "T1", 128, NULL, 2, NULL);
     
-    task_config();
+    task_config();    
     
     vTaskStartScheduler();
     
@@ -22,8 +28,9 @@ int main()
 }
 
 void task_1()
-{
+{    
     for (;;) {
+        xSemaphoreTake(s, portMAX_DELAY);
         LATDbits.LATD0 = ~PORTDbits.RD0;
     }
 }
@@ -31,7 +38,7 @@ void task_1()
 void task_2()
 {
     while (1) {
-        LATDbits.LATD1 = ~PORTDbits.RD0;
+        LATDbits.LATD1 = ~PORTDbits.RD1;
     }
 }
 

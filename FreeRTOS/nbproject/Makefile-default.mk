@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=croutine.c event_groups.c list.c port.c queue.c stream_buffer.c tasks.c timers.c main.c portasm_PIC24.S heap_1.c
+SOURCEFILES_QUOTED_IF_SPACED=croutine.c event_groups.c list.c port.c queue.c stream_buffer.c tasks.c timers.c main.c portasm_PIC24.S heap_1.c jantar.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/croutine.o ${OBJECTDIR}/event_groups.o ${OBJECTDIR}/list.o ${OBJECTDIR}/port.o ${OBJECTDIR}/queue.o ${OBJECTDIR}/stream_buffer.o ${OBJECTDIR}/tasks.o ${OBJECTDIR}/timers.o ${OBJECTDIR}/main.o ${OBJECTDIR}/portasm_PIC24.o ${OBJECTDIR}/heap_1.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/croutine.o.d ${OBJECTDIR}/event_groups.o.d ${OBJECTDIR}/list.o.d ${OBJECTDIR}/port.o.d ${OBJECTDIR}/queue.o.d ${OBJECTDIR}/stream_buffer.o.d ${OBJECTDIR}/tasks.o.d ${OBJECTDIR}/timers.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/portasm_PIC24.o.d ${OBJECTDIR}/heap_1.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/croutine.o ${OBJECTDIR}/event_groups.o ${OBJECTDIR}/list.o ${OBJECTDIR}/port.o ${OBJECTDIR}/queue.o ${OBJECTDIR}/stream_buffer.o ${OBJECTDIR}/tasks.o ${OBJECTDIR}/timers.o ${OBJECTDIR}/main.o ${OBJECTDIR}/portasm_PIC24.o ${OBJECTDIR}/heap_1.o ${OBJECTDIR}/jantar.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/croutine.o.d ${OBJECTDIR}/event_groups.o.d ${OBJECTDIR}/list.o.d ${OBJECTDIR}/port.o.d ${OBJECTDIR}/queue.o.d ${OBJECTDIR}/stream_buffer.o.d ${OBJECTDIR}/tasks.o.d ${OBJECTDIR}/timers.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/portasm_PIC24.o.d ${OBJECTDIR}/heap_1.o.d ${OBJECTDIR}/jantar.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/croutine.o ${OBJECTDIR}/event_groups.o ${OBJECTDIR}/list.o ${OBJECTDIR}/port.o ${OBJECTDIR}/queue.o ${OBJECTDIR}/stream_buffer.o ${OBJECTDIR}/tasks.o ${OBJECTDIR}/timers.o ${OBJECTDIR}/main.o ${OBJECTDIR}/portasm_PIC24.o ${OBJECTDIR}/heap_1.o
+OBJECTFILES=${OBJECTDIR}/croutine.o ${OBJECTDIR}/event_groups.o ${OBJECTDIR}/list.o ${OBJECTDIR}/port.o ${OBJECTDIR}/queue.o ${OBJECTDIR}/stream_buffer.o ${OBJECTDIR}/tasks.o ${OBJECTDIR}/timers.o ${OBJECTDIR}/main.o ${OBJECTDIR}/portasm_PIC24.o ${OBJECTDIR}/heap_1.o ${OBJECTDIR}/jantar.o
 
 # Source Files
-SOURCEFILES=croutine.c event_groups.c list.c port.c queue.c stream_buffer.c tasks.c timers.c main.c portasm_PIC24.S heap_1.c
+SOURCEFILES=croutine.c event_groups.c list.c port.c queue.c stream_buffer.c tasks.c timers.c main.c portasm_PIC24.S heap_1.c jantar.c
 
 
 
@@ -149,6 +149,12 @@ ${OBJECTDIR}/heap_1.o: heap_1.c  .generated_files/flags/default/93a3eda799c62e6f
 	@${RM} ${OBJECTDIR}/heap_1.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  heap_1.c  -o ${OBJECTDIR}/heap_1.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/heap_1.o.d"      -g -D__DEBUG     -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
+${OBJECTDIR}/jantar.o: jantar.c  .generated_files/flags/default/75962fae6c848c5ba94088d0f4e3ce1ad02579e5 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/jantar.o.d 
+	@${RM} ${OBJECTDIR}/jantar.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  jantar.c  -o ${OBJECTDIR}/jantar.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/jantar.o.d"      -g -D__DEBUG     -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
 else
 ${OBJECTDIR}/croutine.o: croutine.c  .generated_files/flags/default/af5c6b43acc63429a98e2c8ab801df2c3a7d4912 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
@@ -209,6 +215,12 @@ ${OBJECTDIR}/heap_1.o: heap_1.c  .generated_files/flags/default/7db82d08ec4f801e
 	@${RM} ${OBJECTDIR}/heap_1.o.d 
 	@${RM} ${OBJECTDIR}/heap_1.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  heap_1.c  -o ${OBJECTDIR}/heap_1.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/heap_1.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/jantar.o: jantar.c  .generated_files/flags/default/cb3a8b0d8c9c00c84a39ab29a52c79a0f2ac2c1 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/jantar.o.d 
+	@${RM} ${OBJECTDIR}/jantar.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  jantar.c  -o ${OBJECTDIR}/jantar.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/jantar.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
 endif
 

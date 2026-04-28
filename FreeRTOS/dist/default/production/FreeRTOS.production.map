@@ -29,6 +29,7 @@ Command:
   build/default/production/main.o \
   build/default/production/portasm_PIC24.o \
   build/default/production/heap_1.o \
+  build/default/production/jantar.o \
   --defsym=__MPLAB_BUILD=1 \
   -Tp24FJ128GA010.gld.00 \
   --stack=16 \
@@ -82,10 +83,10 @@ section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200               0x1f0           0x2e8  (744)
 .const                       0x3f0                0x34            0x4e  (78)
-.text                        0x424              0x4f36          0x76d1  (30417)
-.dinit                      0x535a                0x2e            0x45  (69)
+.text                        0x424              0x4fbe          0x779d  (30621)
+.dinit                      0x53e2                0x3a            0x57  (87)
 
-                 Total "program" memory used (bytes):         0x7a4c  (31308) 23%
+                 Total "program" memory used (bytes):         0x7b2a  (31530) 24%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x2000]
@@ -94,9 +95,10 @@ section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
 .nbss                        0x800                   0            0x2c  (44)
 .ndata                       0x82c                   0             0x2  (2)
-.bss                         0x82e                   0          0x1346  (4934)
+.nbss                        0x82e                   0             0x2  (2)
+.bss                         0x830                   0          0x1350  (4944)
 
-                 Total "data" memory used (bytes):         0x1374  (4980) 60%
+                 Total "data" memory used (bytes):         0x1380  (4992) 60%
 
 
 Dynamic Memory Usage
@@ -104,9 +106,9 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                       0x1b74                               0xc8c  (3212)
+stack                       0x1b80                               0xc80  (3200)
 
-                 Maximum dynamic memory (bytes):          0xc8c  (3212)
+                 Maximum dynamic memory (bytes):          0xc80  (3200)
 
 Info: Project is using a large data memory model when small data memory model is sufficient.
 
@@ -115,25 +117,29 @@ External Symbols in Data Memory (by address):
 
                     0x0800                  _pxCurrentTCB
                     0x082c                  _uxCriticalNesting
+                    0x082e                  _s
+                    0x1b76                  _hashis
 
 External Symbols in Data Memory (by name):
 
+                    0x1b76                  _hashis
                     0x0800                  _pxCurrentTCB
+                    0x082e                  _s
                     0x082c                  _uxCriticalNesting
 
 External Symbols in Program Memory (by address):
 
                   0x000200                  __resetPRI
                   0x00023c                  __psv_init
-                  0x000252                  __data_init_standard
                   0x000252                  __data_init
+                  0x000252                  __data_init_standard
                   0x0002d8                  __T1Interrupt
                   0x000308                  __DefaultInterrupt
                   0x00030e                  _memcpy
                   0x00031c                  _memset
-                  0x0003e4                  ___mulp32peds3
                   0x0003e4                  ___mulsi3
                   0x0003e4                  ___mulp32eds3
+                  0x0003e4                  ___mulp32peds3
                   0x0004c2                  _xTaskCreateStatic
                   0x00055e                  _xTaskCreate
                   0x000746                  _vTaskDelete
@@ -279,10 +285,16 @@ External Symbols in Program Memory (by address):
                   0x005292                  _xPortGetFreeHeapSize
                   0x00529e                  _vPortHeapResetState
                   0x0052a6                  _main
-                  0x0052ca                  _task_1
-                  0x0052e4                  _task_2
-                  0x005300                  _task_config
-                  0x00530a                  _vPortYield
+                  0x0052de                  _task_1
+                  0x0052fe                  _task_2
+                  0x00531a                  _task_config
+                  0x005324                  _jantar_config
+                  0x00535e                  _fil_0
+                  0x005382                  _fil_1
+                  0x005386                  _fil_2
+                  0x00538a                  _fil_3
+                  0x00538e                  _fil_4
+                  0x005392                  _vPortYield
 
 External Symbols in Program Memory (by name):
 
@@ -295,6 +307,12 @@ External Symbols in Program Memory (by name):
                   0x000252                  __data_init_standard
                   0x00023c                  __psv_init
                   0x000200                  __resetPRI
+                  0x00535e                  _fil_0
+                  0x005382                  _fil_1
+                  0x005386                  _fil_2
+                  0x00538a                  _fil_3
+                  0x00538e                  _fil_4
+                  0x005324                  _jantar_config
                   0x0052a6                  _main
                   0x00030e                  _memcpy
                   0x00031c                  _memset
@@ -304,9 +322,9 @@ External Symbols in Program Memory (by name):
                   0x001c22                  _pvTaskIncrementMutexHeldCount
                   0x0049cc                  _pvTimerGetTimerID
                   0x004f86                  _pxPortInitialiseStack
-                  0x0052ca                  _task_1
-                  0x0052e4                  _task_2
-                  0x005300                  _task_config
+                  0x0052de                  _task_1
+                  0x0052fe                  _task_2
+                  0x00531a                  _task_config
                   0x001c3e                  _ulTaskGenericNotifyTake
                   0x00244a                  _ulTaskGenericNotifyValueClear
                   0x0051b6                  _uxListRemove
@@ -338,7 +356,7 @@ External Symbols in Program Memory (by name):
                   0x00526c                  _vPortFree
                   0x00529e                  _vPortHeapResetState
                   0x00528a                  _vPortInitialiseBlocks
-                  0x00530a                  _vPortYield
+                  0x005392                  _vPortYield
                   0x003342                  _vQueueDelete
                   0x0035d4                  _vQueueWaitForMessageRestricted
                   0x00384e                  _vStreamBufferDelete
@@ -473,6 +491,7 @@ LOAD build/default/production/timers.o
 LOAD build/default/production/main.o
 LOAD build/default/production/portasm_PIC24.o
 LOAD build/default/production/heap_1.o
+LOAD build/default/production/jantar.o
                     0x0001                  __MPLAB_BUILD = 0x1
 LOAD pPIC24Fxxx
 LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libfx-elf.a
@@ -537,7 +556,7 @@ __CONFIG1
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x9ccf
+.debug_info       0x000000       0xa069
  *(.debug_info)
  .debug_info      0x000000        0x187 build/default/production/croutine.o
  .debug_info      0x000187        0xcd2 build/default/production/event_groups.o
@@ -547,13 +566,14 @@ __CONFIG1
  .debug_info      0x0037e1       0x1506 build/default/production/stream_buffer.o
  .debug_info      0x004ce7       0x2cb3 build/default/production/tasks.o
  .debug_info      0x00799a       0x1745 build/default/production/timers.o
- .debug_info      0x0090df        0x68c build/default/production/main.o
- .debug_info      0x00976b         0xc2 build/default/production/portasm_PIC24.o
- .debug_info      0x00982d        0x416 build/default/production/heap_1.o
- .debug_info      0x009c43         0x8c c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(mulsi3.XX_o)
+ .debug_info      0x0090df        0x735 build/default/production/main.o
+ .debug_info      0x009814         0xc2 build/default/production/portasm_PIC24.o
+ .debug_info      0x0098d6        0x416 build/default/production/heap_1.o
+ .debug_info      0x009cec        0x2f1 build/default/production/jantar.o
+ .debug_info      0x009fdd         0x8c c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(mulsi3.XX_o)
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0xf54
+.debug_abbrev     0x000000       0x104f
  *(.debug_abbrev)
  .debug_abbrev    0x000000         0x1f build/default/production/croutine.o
  .debug_abbrev    0x00001f        0x1f4 build/default/production/event_groups.o
@@ -563,12 +583,13 @@ __CONFIG1
  .debug_abbrev    0x0006de        0x1d9 build/default/production/stream_buffer.o
  .debug_abbrev    0x0008b7        0x246 build/default/production/tasks.o
  .debug_abbrev    0x000afd        0x264 build/default/production/timers.o
- .debug_abbrev    0x000d61         0x9d build/default/production/main.o
- .debug_abbrev    0x000dfe         0x14 build/default/production/portasm_PIC24.o
- .debug_abbrev    0x000e12        0x12e build/default/production/heap_1.o
- .debug_abbrev    0x000f40         0x14 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(mulsi3.XX_o)
+ .debug_abbrev    0x000d61         0xe6 build/default/production/main.o
+ .debug_abbrev    0x000e47         0x14 build/default/production/portasm_PIC24.o
+ .debug_abbrev    0x000e5b        0x12e build/default/production/heap_1.o
+ .debug_abbrev    0x000f89         0xb2 build/default/production/jantar.o
+ .debug_abbrev    0x00103b         0x14 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(mulsi3.XX_o)
 
-.debug_line       0x000000       0x1804
+.debug_line       0x000000       0x18ec
  *(.debug_line)
  .debug_line      0x000000         0x1a build/default/production/croutine.o
  .debug_line      0x00001a        0x22f build/default/production/event_groups.o
@@ -578,12 +599,13 @@ __CONFIG1
  .debug_line      0x0008d6        0x325 build/default/production/stream_buffer.o
  .debug_line      0x000bfb        0x66d build/default/production/tasks.o
  .debug_line      0x001268        0x2c1 build/default/production/timers.o
- .debug_line      0x001529        0x115 build/default/production/main.o
- .debug_line      0x00163e         0x62 build/default/production/portasm_PIC24.o
- .debug_line      0x0016a0        0x12a build/default/production/heap_1.o
- .debug_line      0x0017ca         0x3a c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(mulsi3.XX_o)
+ .debug_line      0x001529        0x13e build/default/production/main.o
+ .debug_line      0x001667         0x62 build/default/production/portasm_PIC24.o
+ .debug_line      0x0016c9        0x12a build/default/production/heap_1.o
+ .debug_line      0x0017f3         0xbf build/default/production/jantar.o
+ .debug_line      0x0018b2         0x3a c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(mulsi3.XX_o)
 
-.debug_frame      0x000000       0x13e6
+.debug_frame      0x000000       0x1496
  *(.debug_frame)
  .debug_frame     0x000000        0x14c build/default/production/event_groups.o
  .debug_frame     0x00014c         0x96 build/default/production/list.o
@@ -594,6 +616,7 @@ __CONFIG1
  .debug_frame     0x000fe8        0x2ec build/default/production/timers.o
  .debug_frame     0x0012d4         0x7c build/default/production/main.o
  .debug_frame     0x001350         0x96 build/default/production/heap_1.o
+ .debug_frame     0x0013e6         0xb0 build/default/production/jantar.o
 
 .debug_str        0x000000        0x80c
  *(.debug_str)
@@ -613,7 +636,7 @@ __CONFIG1
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000        0xfea
+                  0x000000       0x1051
  *(.debug_pubnames)
  .debug_pubnames
                   0x000000        0x133 build/default/production/event_groups.o
@@ -630,14 +653,16 @@ __CONFIG1
  .debug_pubnames
                   0x000d7b        0x1b2 build/default/production/timers.o
  .debug_pubnames
-                  0x000f2d         0x41 build/default/production/main.o
+                  0x000f2d         0x47 build/default/production/main.o
  .debug_pubnames
-                  0x000f6e         0x7c build/default/production/heap_1.o
+                  0x000f74         0x7c build/default/production/heap_1.o
+ .debug_pubnames
+                  0x000ff0         0x61 build/default/production/jantar.o
 
 .debug_ranges
  *(.debug_ranges)
 
-.debug_aranges    0x000000        0x118
+.debug_aranges    0x000000        0x130
  *(.debug_aranges)
  .debug_aranges
                   0x000000         0x18 build/default/production/event_groups.o
@@ -660,7 +685,9 @@ __CONFIG1
  .debug_aranges
                   0x0000e0         0x18 build/default/production/heap_1.o
  .debug_aranges
-                  0x0000f8         0x20 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(mulsi3.XX_o)
+                  0x0000f8         0x18 build/default/production/jantar.o
+ .debug_aranges
+                  0x000110         0x20 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(mulsi3.XX_o)
                     0x0000                  WREG0 = 0x0
                     0x0000                  _WREG0 = 0x0
                     0x0002                  WREG1 = 0x2
@@ -1244,60 +1271,64 @@ LOAD default_isr
 LOAD data_init
 
 .debug_pubtypes
-                  0x000118        0xc41
+                  0x000130        0xd24
  .debug_pubtypes
-                  0x000118         0x12 build/default/production/croutine.o
+                  0x000130         0x12 build/default/production/croutine.o
  .debug_pubtypes
-                  0x00012a        0x1b5 build/default/production/event_groups.o
+                  0x000142        0x1b5 build/default/production/event_groups.o
  .debug_pubtypes
-                  0x0002df         0x98 build/default/production/list.o
+                  0x0002f7         0x98 build/default/production/list.o
  .debug_pubtypes
-                  0x000377        0x109 build/default/production/port.o
+                  0x00038f        0x109 build/default/production/port.o
  .debug_pubtypes
-                  0x000480        0x212 build/default/production/queue.o
+                  0x000498        0x212 build/default/production/queue.o
  .debug_pubtypes
-                  0x000692        0x14f build/default/production/stream_buffer.o
+                  0x0006aa        0x14f build/default/production/stream_buffer.o
  .debug_pubtypes
-                  0x0007e1        0x1e5 build/default/production/tasks.o
+                  0x0007f9        0x1e5 build/default/production/tasks.o
  .debug_pubtypes
-                  0x0009c6        0x2ca build/default/production/timers.o
+                  0x0009de        0x2ca build/default/production/timers.o
  .debug_pubtypes
-                  0x000c90         0x7a build/default/production/main.o
+                  0x000ca8         0xdc build/default/production/main.o
  .debug_pubtypes
-                  0x000d0a         0x4f build/default/production/heap_1.o
+                  0x000d84         0x4f build/default/production/heap_1.o
+ .debug_pubtypes
+                  0x000dd3         0x81 build/default/production/jantar.o
 
 __c30_signature
-                  0x000d59         0x5a
+                  0x000e54         0x60
  __c30_signature
-                  0x000d59          0x6 build/default/production/croutine.o
+                  0x000e54          0x6 build/default/production/croutine.o
  __c30_signature
-                  0x000d5f          0x6 build/default/production/event_groups.o
+                  0x000e5a          0x6 build/default/production/event_groups.o
  __c30_signature
-                  0x000d65          0x6 build/default/production/list.o
+                  0x000e60          0x6 build/default/production/list.o
  __c30_signature
-                  0x000d6b          0x6 build/default/production/port.o
+                  0x000e66          0x6 build/default/production/port.o
  __c30_signature
-                  0x000d71          0x6 build/default/production/queue.o
+                  0x000e6c          0x6 build/default/production/queue.o
  __c30_signature
-                  0x000d77          0x6 build/default/production/stream_buffer.o
+                  0x000e72          0x6 build/default/production/stream_buffer.o
  __c30_signature
-                  0x000d7d          0x6 build/default/production/tasks.o
+                  0x000e78          0x6 build/default/production/tasks.o
  __c30_signature
-                  0x000d83          0x6 build/default/production/timers.o
+                  0x000e7e          0x6 build/default/production/timers.o
  __c30_signature
-                  0x000d89          0x6 build/default/production/main.o
+                  0x000e84          0x6 build/default/production/main.o
  __c30_signature
-                  0x000d8f          0x6 build/default/production/heap_1.o
+                  0x000e8a          0x6 build/default/production/heap_1.o
  __c30_signature
-                  0x000d95          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_standard.o)
+                  0x000e90          0x6 build/default/production/jantar.o
  __c30_signature
-                  0x000d9b          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(data_init_standard.o)
+                  0x000e96          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_standard.o)
  __c30_signature
-                  0x000da1          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-elf.a(memcpy.XX_o)
+                  0x000e9c          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(data_init_standard.o)
  __c30_signature
-                  0x000da7          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-elf.a(memset.XX_o)
+                  0x000ea2          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-elf.a(memcpy.XX_o)
  __c30_signature
-                  0x000dad          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(mulsi3.XX_o)
+                  0x000ea8          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-elf.a(memset.XX_o)
+ __c30_signature
+                  0x000eae          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(mulsi3.XX_o)
 
 .nbss               0x0800         0x2c
  .nbss              0x0800         0x1e build/default/production/tasks.o
@@ -1309,10 +1340,16 @@ __c30_signature
  .ndata             0x082c          0x2 build/default/production/port.o
                     0x082c                  _uxCriticalNesting
 
-.bss                0x082e       0x1346
- .bss               0x082e       0x1000 build/default/production/heap_1.o
- .bss               0x182e        0x2d0 build/default/production/tasks.o
- .bss               0x1afe         0x76 build/default/production/timers.o
+.nbss               0x082e          0x2
+ .nbss              0x082e          0x2 build/default/production/main.o
+                    0x082e                  _s
+
+.bss                0x0830       0x1350
+ .bss               0x0830       0x1000 build/default/production/heap_1.o
+ .bss               0x1830        0x2d0 build/default/production/tasks.o
+ .bss               0x1b00         0x76 build/default/production/timers.o
+ .bss               0x1b76          0xa build/default/production/jantar.o
+                    0x1b76                  _hashis
 
 .ivt._T1Interrupt
                   0x00001a          0x2
@@ -1325,7 +1362,7 @@ __c30_signature
  .const             0x8418          0x8 build/default/production/timers.o
  .const             0x8420          0x4 build/default/production/main.o
 
-.text             0x000424       0x4f36
+.text             0x000424       0x4fbe
  .text            0x000424       0x21a6 build/default/production/tasks.o
                   0x0004c2                  _xTaskCreateStatic
                   0x00055e                  _xTaskCreate
@@ -1479,13 +1516,20 @@ __c30_signature
                   0x00528a                  _vPortInitialiseBlocks
                   0x005292                  _xPortGetFreeHeapSize
                   0x00529e                  _vPortHeapResetState
- .text            0x0052a6         0x64 build/default/production/main.o
+ .text            0x0052a6         0x7e build/default/production/main.o
                   0x0052a6                  _main
-                  0x0052ca                  _task_1
-                  0x0052e4                  _task_2
-                  0x005300                  _task_config
- .text            0x00530a         0x50 build/default/production/portasm_PIC24.o
-                  0x00530a                  _vPortYield
+                  0x0052de                  _task_1
+                  0x0052fe                  _task_2
+                  0x00531a                  _task_config
+ .text            0x005324         0x6e build/default/production/jantar.o
+                  0x005324                  _jantar_config
+                  0x00535e                  _fil_0
+                  0x005382                  _fil_1
+                  0x005386                  _fil_2
+                  0x00538a                  _fil_3
+                  0x00538e                  _fil_4
+ .text            0x005392         0x50 build/default/production/portasm_PIC24.o
+                  0x005392                  _vPortYield
 
-.dinit            0x00535a         0x2e
- .dinit           0x00535a         0x2e data_init
+.dinit            0x0053e2         0x3a
+ .dinit           0x0053e2         0x3a data_init
